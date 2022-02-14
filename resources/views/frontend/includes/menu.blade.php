@@ -117,7 +117,12 @@
                                                         @endif
                                                     </span>
                                                     </p>
-                                                    <a href="#" title="Remove This Item" class="btn-remove"><i class="fas fa-times"></i></a>
+                                                    <form action="{{route('card.destroy',$items->id)}}" method='POST'>
+                                                        @csrf 
+                                                        <button type='submit' title="Remove This Item" class="btn-remove card-item-remov">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </li>
                                             @endforeach

@@ -103,6 +103,10 @@ class cardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Card::find($id);
+        if( !empty($delete)){
+            $delete->delete();
+        }
+        return redirect()->back();
     }
 }
