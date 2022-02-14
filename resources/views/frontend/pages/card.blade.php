@@ -39,67 +39,67 @@
 													</th>
 												</tr>
 											</thead>
-			<tbody>
-				@php $totalPrice = 0 @endphp
-				@foreach($cardProduct as $item)
-				<tr class="cart_table_item">
-					<td class="product-remove">
-						<form action="{{route('card.destroy',$item->id)}}" method='POST'>
-							@csrf 
-							<button type='submit' title="Remove this item" class="remove remove-card-item-page">
-								<i class="fas fa-times"></i>
-							</button>
-						</form>
-					</td>
-					<td class="product-thumbnail">
-						@if( $item->products->images->count() > 0 )
-						<a href="{{route('product-details', $item->products->slug)}}">
-							<img width="100" height="100" alt="" class="img-fluid" src="{{asset('backend/img/product/'.$item->products->images->first()->image)}}">
-						</a>
-						@endif
-					</td>
-					<td class="product-name">
-						<a href="{{route('product-details', $item->products->slug)}}">{{$item->products->name}}</a>
-					</td>
-					<td class="product-price">
-						<span class="amount">
-					@if(!empty($item->products->offer_price))
-					{{$item->products->offer_price}} BDT
-					@else
-					{{$item->products->regular_price}} BDT
-					@endif
-						</span>
-					</td>
-					<td class="product-quantity">
-					<form action="{{route('card.update', $item->id)}}" method="POST" class="cart">
-						@csrf 
-						<div class="quantity">
-							<input type="submit"  class="minus" value="-">
-							<input type="text" class="input-text qty text" title="Qty" value="{{$item->product_qty}}" name="quantity" min="1" step="1">
-							<input type="submit"  class="plus" value="+">
-						</div>
-					</form>
-					</td>
-					<td class="product-subtotal">
-						<span class="amount">
-							@if(!empty($item->products->offer_price))
-							{{$totalPrice = $item->products->offer_price * $item->product_qty;}} BDT
-							@else
-							{{$totalPrice = $item->products->regular_price * $item->product_qty;}} BDT
-							@endif
-						</span>
-					</td>
-				</tr>
-				@endforeach
-			
-				<!-- <tr>
-					<td class="actions" colspan="6">
-						<div class="actions-continue">
-							<input type="submit" value="Update Cart" name="update_cart" class="btn btn-xl btn-light pr-4 pl-4 text-2 font-weight-semibold text-uppercase">
-						</div>
-					</td>
-				</tr> -->
-			</tbody>
+											<tbody>
+												@php $totalPrice = 0 @endphp
+												@foreach($cardProduct as $item)
+												<tr class="cart_table_item">
+													<td class="product-remove">
+														<form action="{{route('card.destroy',$item->id)}}" method='POST'>
+															@csrf 
+															<button type='submit' title="Remove this item" class="remove remove-card-item-page">
+																<i class="fas fa-times"></i>
+															</button>
+														</form>
+													</td>
+													<td class="product-thumbnail">
+														@if( $item->products->images->count() > 0 )
+														<a href="{{route('product-details', $item->products->slug)}}">
+															<img width="100" height="100" alt="" class="img-fluid" src="{{asset('backend/img/product/'.$item->products->images->first()->image)}}">
+														</a>
+														@endif
+													</td>
+													<td class="product-name">
+														<a href="{{route('product-details', $item->products->slug)}}">{{$item->products->name}}</a>
+													</td>
+													<td class="product-price">
+														<span class="amount">
+													@if(!empty($item->products->offer_price))
+													{{$item->products->offer_price}} BDT
+													@else
+													{{$item->products->regular_price}} BDT
+													@endif
+														</span>
+													</td>
+													<td class="product-quantity">
+													<form action="{{route('card.update', $item->id)}}" method="POST" class="cart">
+														@csrf 
+														<div class="quantity">
+															<input type="submit"  class="minus" value="-">
+															<input type="text" class="input-text qty text" title="Qty" value="{{$item->product_qty}}" name="quantity" min="1" step="1">
+															<input type="submit"  class="plus" value="+">
+														</div>
+													</form>
+													</td>
+													<td class="product-subtotal">
+														<span class="amount">
+															@if(!empty($item->products->offer_price))
+															{{$totalPrice = $item->products->offer_price * $item->product_qty;}} BDT
+															@else
+															{{$totalPrice = $item->products->regular_price * $item->product_qty;}} BDT
+															@endif
+														</span>
+													</td>
+												</tr>
+												@endforeach
+											
+												<!-- <tr>
+													<td class="actions" colspan="6">
+														<div class="actions-continue">
+															<input type="submit" value="Update Cart" name="update_cart" class="btn btn-xl btn-light pr-4 pl-4 text-2 font-weight-semibold text-uppercase">
+														</div>
+													</td>
+												</tr> -->
+											</tbody>
 										</table>
 								
 									</div>
