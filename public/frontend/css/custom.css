@@ -1,0 +1,69 @@
+/* Add here all your CSS customizations */
+
+/* frontend header right profile icon  css code start */
+img.profile-icon-header {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* frontend header right profile icon  css code end */
+
+
+
+ul.nav-list li a {
+    border-bottom: 0;
+}
+ol ol, ol ul, ul ol, ul ul{
+    padding-left: 0px;
+}
+span.amount.text-dark.font-weight-semibold{
+    font-size: 20px !important;
+    color: red;
+}
+span.product-thumb-info.border-0 {
+    height: 299px;
+    background: #fff;
+    box-shadow: 0px 0px 2px rgb(192, 192, 192);
+    border-radius: 4px;
+}
+span.product-thumb-info.border-0:hover {
+    height: 299px;
+    background: #fff;
+    box-shadow: 0px 3px 3px rgba(192, 191, 191, 0.623);
+    border-radius: 4px;
+}
+
+
+aside ul.nav li.nav-item {
+    position: relative;
+}
+
+aside ul.nav li.nav-item ul.sublist{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: rgb(243, 243, 243);
+    width: 100%;
+    z-index: 999;
+    margin-left: 0;
+
+}
+aside ul.nav li.nav-item ul.sublist li{
+    margin-left: 18px;
+}
+
+aside ul.nav li.nav-item:hover ul.sublist{
+    display: block;
+}
+
+.card-item-remov{
+    border: none;
+    background: transparent;
+}
+.card-item-remov:focus{
+    border: none !important;
+    background: transparent !important;
+}

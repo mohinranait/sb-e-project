@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* backend admin login page css code start */
+
+.login-wrapper .mb-4{
+    background: rgb(29, 191, 212);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+/* backend admin login page css code end */
