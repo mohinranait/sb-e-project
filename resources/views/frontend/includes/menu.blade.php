@@ -99,6 +99,7 @@
                                     </a>
                                     <div class="header-nav-features-dropdown" id="headerTopCartDropdown">
                                         <ol class="mini-products-list">
+                                            @if(App\Models\Card::count() > 0)
                                             @foreach(App\Models\Card::orderby('id','asc')->get() as $items)
                                             <li class="item">
                                                 @if( $items->products->images->count() > 0 )
@@ -126,6 +127,11 @@
                                                 </div>
                                             </li>
                                             @endforeach
+                                            @else
+                                            <p class="alert alert-info text-center">
+                                                No Item found in Your Card
+                                            </p>
+                                            @endif
                                         </ol>
                                         <div class="totals">
                                             <span class="label">Total:</span>

@@ -41,6 +41,7 @@
 											</thead>
 											<tbody>
 												@php $totalPrice = 0 @endphp
+												@if( $cardProduct->count() > 0)
 												@foreach($cardProduct as $item)
 												<tr class="cart_table_item">
 													<td class="product-remove">
@@ -91,6 +92,11 @@
 													</td>
 												</tr>
 												@endforeach
+												@else
+												<p class="alert alert-info text-center">
+													No Item Found In your Card
+												</p>
+												@endif
 											
 												<!-- <tr>
 													<td class="actions" colspan="6">
