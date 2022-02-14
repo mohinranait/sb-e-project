@@ -111,9 +111,9 @@
                                                     <p class="qty-price">
                                                     {{$items->product_qty}}X <span class="price">
                                                         @if( !empty($items->products->offer_price) )
-                                                            {{$items->products->offer_price}}
+                                                            {{$items->products->offer_price}} BDT
                                                         @else 
-                                                        {{$items->products->regular_price}}
+                                                        {{$items->products->regular_price}} BDT
                                                         @endif
                                                     </span>
                                                     </p>
@@ -129,10 +129,10 @@
                                         </ol>
                                         <div class="totals">
                                             <span class="label">Total:</span>
-                                            <span class="price-total"><span class="price">{{App\Models\card::totalPrice()}}</span></span>
+                                            <span class="price-total"><span class="price">{{App\Models\card::totalPrice()}} BDT</span></span>
                                         </div>
                                         <div class="actions">
-                                            <a class="btn btn-dark" href="#">View Cart</a>
+                                            <a class="btn btn-dark" href="{{route('card.items')}}">View Cart</a>
                                             <a class="btn btn-primary" href="#">Checkout</a>
                                         </div>
                                     </div>

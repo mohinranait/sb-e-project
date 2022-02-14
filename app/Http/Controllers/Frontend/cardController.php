@@ -18,7 +18,7 @@ class cardController extends Controller
      */
     public function index()
     {
-        
+        return view('frontend.pages.card');
     }
 
     /**
