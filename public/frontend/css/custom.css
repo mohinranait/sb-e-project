@@ -65,5 +65,6 @@ aside ul.nav li.nav-item:hover ul.sublist{
 }
 .card-item-remov:focus{
     border: none !important;
+    outline: none;
     background: transparent !important;
 }

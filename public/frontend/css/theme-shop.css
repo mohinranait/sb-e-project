@@ -499,7 +499,7 @@ Theme Version:	8.0.0
 }
 
 .shop table.cart .product-name {
-	width: 60%;
+	width: 57%;
 }
 
 .shop table.cart .quantity {
@@ -677,6 +677,18 @@ Theme Version:	8.0.0
 /* Product Thumb Info - Full Width */
 .full-width .product-thumb-info .product-thumb-info-image:before {
 	border-radius: 0;
+}
+.remove-card-item-page{
+	background: transparent;
+    border: none;
+	outline: 0;
+    color: #0088CC;
+}
+.remove-card-item-page:focus{
+	background: transparent;
+	box-shadow: 0;
+	outline: 0;
+    color: #0088CC;
 }
 
 /* Responsive */

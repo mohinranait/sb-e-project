@@ -18,7 +18,8 @@ class cardController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.card');
+        $cardProduct = Card::orderby('id','asc')->get(); 
+        return view('frontend.pages.card',compact('cardProduct'));
     }
 
     /**
@@ -92,7 +93,15 @@ class cardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = Card::find($id);
+        if( !empty( $update)){
+            $update->product_qty = $request->quantity;
+            $update->save();
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+        return redirect()->back();
     }
 
     /**

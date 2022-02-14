@@ -15,131 +15,93 @@
 								<div class="featured-box featured-box-primary text-left mt-2">
 									<div class="box-content">
 										
-										<form method="post" action="">
-											<table class="shop_table cart">
-												<thead>
-													<tr>
-														<th class="product-remove">
-															&nbsp;
-														</th>
-														<th class="product-thumbnail">
-															&nbsp;
-														</th>
-														<th class="product-name">
-															Product
-														</th>
-														<th class="product-price">
-															Price
-														</th>
-														<th class="product-quantity">
-															Quantity
-														</th>
-														<th class="product-subtotal">
-															Total
-														</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr class="cart_table_item">
-														<td class="product-remove">
-															<a title="Remove this item" class="remove" href="#">
-																<i class="fas fa-times"></i>
-															</a>
-														</td>
-														<td class="product-thumbnail">
-															<a href="shop-product-sidebar-left.html">
-																<img width="100" height="100" alt="" class="img-fluid" src="{{asset('frontend/img/products/product-grey-1.jpg')}}">
-															</a>
-														</td>
-														<td class="product-name">
-															<a href="shop-product-sidebar-left.html">Photo Camera</a>
-														</td>
-														<td class="product-price">
-															<span class="amount">$299</span>
-														</td>
-														<td class="product-quantity">
-															<form enctype="multipart/form-data" method="post" class="cart">
-																<div class="quantity">
-																	<input type="button" class="minus" value="-">
-																	<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																	<input type="button" class="plus" value="+">
-																</div>
-															</form>
-														</td>
-														<td class="product-subtotal">
-															<span class="amount">$299</span>
-														</td>
-													</tr>
-													<tr class="cart_table_item">
-														<td class="product-remove">
-															<a title="Remove this item" class="remove" href="#">
-																<i class="fas fa-times"></i>
-															</a>
-														</td>
-														<td class="product-thumbnail">
-															<a href="shop-product-sidebar-left.html">
-																<img width="100" height="100" alt="" class="img-fluid" src="{{asset('frontend/img/products/product-grey-2.jpg')}}">
-															</a>
-														</td>
-														<td class="product-name">
-															<a href="shop-product-sidebar-left.html">Golf Bag</a>
-														</td>
-														<td class="product-price">
-															<span class="amount">$72</span>
-														</td>
-														<td class="product-quantity">
-															<form enctype="multipart/form-data" method="post" class="cart">
-																<div class="quantity">
-																	<input type="button" class="minus" value="-">
-																	<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																	<input type="button" class="plus" value="+">
-																</div>
-															</form>
-														</td>
-														<td class="product-subtotal">
-															<span class="amount">$72</span>
-														</td>
-													</tr>
-													<tr class="cart_table_item">
-														<td class="product-remove">
-															<a title="Remove this item" class="remove" href="#">
-																<i class="fas fa-times"></i>
-															</a>
-														</td>
-														<td class="product-thumbnail">
-															<a href="shop-product-sidebar-left.html">
-																<img width="100" height="100" alt="" class="img-fluid" src="{{asset('frontend/img/products/product-grey-3.jpg')}}">
-															</a>
-														</td>
-														<td class="product-name">
-															<a href="shop-product-sidebar-left.html">Workout</a>
-														</td>
-														<td class="product-price">
-															<span class="amount">$60</span>
-														</td>
-														<td class="product-quantity">
-															<form enctype="multipart/form-data" method="post" class="cart">
-																<div class="quantity">
-																	<input type="button" class="minus" value="-">
-																	<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																	<input type="button" class="plus" value="+">
-																</div>
-															</form>
-														</td>
-														<td class="product-subtotal">
-															<span class="amount">$60</span>
-														</td>
-													</tr>
-													<tr>
-														<td class="actions" colspan="6">
-															<div class="actions-continue">
-																<input type="submit" value="Update Cart" name="update_cart" class="btn btn-xl btn-light pr-4 pl-4 text-2 font-weight-semibold text-uppercase">
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</form>
+										
+										<table class="shop_table cart">
+											<thead>
+												<tr>
+													<th class="product-remove">
+														&nbsp;
+													</th>
+													<th class="product-thumbnail">
+														&nbsp;
+													</th>
+													<th class="product-name">
+														Product
+													</th>
+													<th class="product-price">
+														Price
+													</th>
+													<th class="product-quantity">
+														Quantity
+													</th>
+													<th class="product-subtotal">
+														Total
+													</th>
+												</tr>
+											</thead>
+			<tbody>
+				@php $totalPrice = 0 @endphp
+				@foreach($cardProduct as $item)
+				<tr class="cart_table_item">
+					<td class="product-remove">
+						<form action="{{route('card.destroy',$item->id)}}" method='POST'>
+							@csrf 
+							<button type='submit' title="Remove this item" class="remove remove-card-item-page">
+								<i class="fas fa-times"></i>
+							</button>
+						</form>
+					</td>
+					<td class="product-thumbnail">
+						@if( $item->products->images->count() > 0 )
+						<a href="{{route('product-details', $item->products->slug)}}">
+							<img width="100" height="100" alt="" class="img-fluid" src="{{asset('backend/img/product/'.$item->products->images->first()->image)}}">
+						</a>
+						@endif
+					</td>
+					<td class="product-name">
+						<a href="{{route('product-details', $item->products->slug)}}">{{$item->products->name}}</a>
+					</td>
+					<td class="product-price">
+						<span class="amount">
+					@if(!empty($item->products->offer_price))
+					{{$item->products->offer_price}} BDT
+					@else
+					{{$item->products->regular_price}} BDT
+					@endif
+						</span>
+					</td>
+					<td class="product-quantity">
+					<form action="{{route('card.update', $item->id)}}" method="POST" class="cart">
+						@csrf 
+						<div class="quantity">
+							<input type="submit"  class="minus" value="-">
+							<input type="text" class="input-text qty text" title="Qty" value="{{$item->product_qty}}" name="quantity" min="1" step="1">
+							<input type="submit"  class="plus" value="+">
+						</div>
+					</form>
+					</td>
+					<td class="product-subtotal">
+						<span class="amount">
+							@if(!empty($item->products->offer_price))
+							{{$totalPrice = $item->products->offer_price * $item->product_qty;}} BDT
+							@else
+							{{$totalPrice = $item->products->regular_price * $item->product_qty;}} BDT
+							@endif
+						</span>
+					</td>
+				</tr>
+				@endforeach
+			
+				<!-- <tr>
+					<td class="actions" colspan="6">
+						<div class="actions-continue">
+							<input type="submit" value="Update Cart" name="update_cart" class="btn btn-xl btn-light pr-4 pl-4 text-2 font-weight-semibold text-uppercase">
+						</div>
+					</td>
+				</tr> -->
+			</tbody>
+										</table>
+								
 									</div>
 								</div>
 							</div>
