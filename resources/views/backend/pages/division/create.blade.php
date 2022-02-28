@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" name='addDivision' class='btn btn-success' value='Add new Division' >
+                            <input type="submit" name='addDivision' class='btn btn-info' value='Add new Division' >
                         </div>
 
                     </form>

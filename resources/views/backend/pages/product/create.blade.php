@@ -152,7 +152,7 @@
                             <!-- /.col-lg-6 -->
 
                             <div class="col-lg-12 pb-5 ms-auto bg-white">
-                                <input type="submit" class='btn btn-success wd-600' value='Add Product'>
+                                <input type="submit" class='btn btn-info wd-600' value='Add Product'>
                             </div>
                         </div>
                     </form>

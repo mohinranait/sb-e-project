@@ -58,7 +58,7 @@
                                 <input type="file" name='image' class='form-file-control'>
                             </div>
                             <div class="form-group">
-                            <input type="submit" name="addBrand" class="btn" value="Add New Brand" style="background-image:linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%)">
+                            <input type="submit" name="addBrand" class="btn" value="Save Change" style="background-image:linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%)">
                             </div>
                         </form>
                     </div>

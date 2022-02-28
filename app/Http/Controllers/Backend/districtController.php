@@ -48,7 +48,7 @@ class districtController extends Controller
         $district->status       = $request->status;
 
         $district->save();
-        return redirect()->route('district.index');
+        return redirect()->route('district.index')->with('success',' Create Successfull');
     }
 
     /**
@@ -93,7 +93,7 @@ class districtController extends Controller
         $update->status         = $request->status;
 
         $update->save();
-        return redirect()->route('district.index');
+        return redirect()->route('district.index')->with('success',' Update Successfull');
     }
 
     /**

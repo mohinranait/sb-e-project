@@ -78,7 +78,7 @@ class productController extends Controller
             }
         }
 
-        return redirect()->route("product.index");
+        return redirect()->route("product.index")->with('success', 'Update Successfull');
    
     }
 
@@ -162,7 +162,7 @@ class productController extends Controller
             }
         }
 
-        return redirect()->route("product.index");
+        return redirect()->route("product.index")->with('success',' Update Successfull');
 
     }
 

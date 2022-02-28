@@ -1,3 +1,10 @@
+@if (\Session::has('register'))
+
+	<div class="alert alert-primary alert-dismissible  text-center" role="alert">
+		<strong>Congratulations </strong> {!! \Session::get('register') !!} ! . Thanks For Register.
+	</div>
+@endif
+<!--  user Ragistr Congratulation -->
 @extends('frontend.layout.template')
 
 @section('body-content')
@@ -5,6 +12,7 @@
 <div role="main" class="main shop py-4">
 
 		<div class="container">
+		
 
 			<div class="row">
 				<!-- left-sidebar file -->

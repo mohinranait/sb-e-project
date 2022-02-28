@@ -56,7 +56,7 @@ class brandController extends Controller
         }
 
         $brandObj->save();
-        return redirect()->route('brand.index');
+        return redirect()->route('brand.index')->with('success',' Create Successfull');
     }
 
     /**
@@ -114,7 +114,7 @@ class brandController extends Controller
         };
 
         $brandObj->save();
-        return redirect()->route('brand.index');
+        return redirect()->route('brand.index')->with('success',' Update Successfull');
     }
 
     /**

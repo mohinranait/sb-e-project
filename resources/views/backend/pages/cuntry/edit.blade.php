@@ -31,7 +31,7 @@
                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name='cuntrybtn' class='btn btn-success' value='Update Cuntry'>
+                            <input type="submit" name='cuntrybtn' class='btn btn-info' value='Update Cuntry'>
                         </div>
                     </form>
                 </div>

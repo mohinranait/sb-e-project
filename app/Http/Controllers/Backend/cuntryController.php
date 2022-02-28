@@ -42,7 +42,7 @@ class cuntryController extends Controller
         $cuntrys->status = $request->status;
 
         $cuntrys->save();
-        return redirect()->route('cuntry.index');
+        return redirect()->route('cuntry.index')->with('success',' Create Successfull');
     }
 
     /**
@@ -85,7 +85,7 @@ class cuntryController extends Controller
         $cuntrys->status = $request->status;
 
         $cuntrys->save();
-        return redirect()->route('cuntry.index');
+        return redirect()->route('cuntry.index')->with('success',' Update Successfull');
     }
 
     /**

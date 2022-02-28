@@ -100,7 +100,7 @@ class SslCommerzPaymentController extends Controller
                 $payment_options = array();
             }
         }else{
-            return redirect()->route('customer-sinin');
+            return redirect()->route('customer-sinin')->with('login',' Login first. Then check out.');
         }
         
 

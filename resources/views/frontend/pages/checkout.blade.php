@@ -220,7 +220,7 @@
 					
 									<h4 class="text-primary">Payment</h4>
 					
-									<form action="/" id="frmPayment" method="post">
+									<form action="#" id="frmPayment" method="post">
 										<div class="form-row">
 											<div class="form-group col">
 												<div class="custom-control custom-checkbox">

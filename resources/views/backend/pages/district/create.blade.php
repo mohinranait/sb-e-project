@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" name='addDistrict' class="btn btn-success" value="Add new District">
+                                <input type="submit" name='addDistrict' class="btn btn-info" value="Add new District">
                             </div>
                         </form>
                     </div>

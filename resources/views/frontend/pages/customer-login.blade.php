@@ -7,12 +7,18 @@
 			<div class="row">
 				<div class="col">
 					<div class="featured-boxes">
+					@if (\Session::has('login'))
+					<div class="alert alert-tertiary alert-dismissible  text-center" role="alert">
+						<strong>Please  </strong> {!! \Session::get('login') !!} 
+					</div>
+					@endif
 						<div class="row">
+						
 							<div class="col-md-6">
 								<div class="featured-box featured-box-primary text-left mt-2">
 									<div class="box-content">
 										<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a Returning Customer</h4>
-
+										
 										<!-- Customer Login from start -->
 										<form action="{{ route('customer-login')}}" id="frmSignIn" method="POST">
 											@csrf

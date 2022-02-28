@@ -46,7 +46,7 @@ class divisionController extends Controller
         $division->status      = $request->status;
 
         $division->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success',' Create Successfull');
     }
 
     /**
@@ -90,7 +90,7 @@ class divisionController extends Controller
         $update->status      = $request->status;
 
         $update->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success',' Update Successfull');
 
     }
 

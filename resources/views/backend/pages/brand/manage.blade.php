@@ -16,6 +16,19 @@
             <div class="container mt-4">
                 <div class="bd rounded table-responsive">
                     <table class="table table-bordered mg-b-0">
+                    @if (\Session::has('success'))
+
+                        <div class="alert alert-success alert-solid" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <div class="d-flex align-items-center justify-content-start">
+                                <i class="icon ion-ios-checkmark alert-icon tx-32 mg-t-5 mg-xs-t-0"></i>
+                                <span><strong>Well done! </strong> {!! \Session::get('success') !!}</span>
+                            </div><!-- d-flex -->
+                        </div>
+
+                    @endif
                         <thead class='thead-colored thead-info'>
                             <tr>
                                 <th>#</th>
@@ -47,8 +60,8 @@
                                 </td>
                                 <td>
                                     <ul class="d-flex justify-content-around">
-                                        <li><a href="{{ route('brand.edit', $brand->id)}}" class=''><i class="fa fa-edit text-success"></i></a></li>
-                                        <li><a href="" data-toggle="modal" data-target="#delete{{$brand->id}}"><i class="fa fa-trash text-danger"></i></a></li>
+                                        <li><a class='btn btn-primary btn-sm' href="{{ route('brand.edit', $brand->id)}}" class=''><i class="fa fa-edit text-white"></i> EDIT</a></li>
+                                        <li><a class='btn btn-danger btn-sm' href="" data-toggle="modal" data-target="#delete{{$brand->id}}"><i class="fa fa-trash text-white"></i> DELETE</a></li>
                                     </ul>
                                     <!-- model code start -->
                                         <div class="modal fade" id="delete{{$brand->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

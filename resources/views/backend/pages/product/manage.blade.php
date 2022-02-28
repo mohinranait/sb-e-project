@@ -18,7 +18,21 @@
             <div class="m-4 p-4 bg-white">
 
                 <div>
+                @if (\Session::has('success'))
+
+                <div class="alert alert-success alert-solid" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <div class="d-flex align-items-center justify-content-start">
+                        <i class="icon ion-ios-checkmark alert-icon tx-32 mg-t-5 mg-xs-t-0"></i>
+                        <span><strong>Well done! </strong> {!! \Session::get('success') !!}</span>
+                    </div><!-- d-flex -->
+                </div>
+
+                @endif
                     <table class="table table-bordered table-colored table-teal">
+
                         <thead>
                             <tr>
                                 <th>#</th>

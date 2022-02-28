@@ -4,7 +4,7 @@
 @section('body-content')
 
 
-<section class="p-3">
+<section class="p-3 ">
 
     <div class="br-mainpanel">
         <div class="br-pagetitle" style='background:linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%);'>
@@ -16,10 +16,23 @@
         </div>
 
       
-          <div class="row">
+          <div class="row mt-3">
             <div class="col-lg-12">
 
               <table class="table table-bordered table-colored table-teal">
+              @if (\Session::has('success'))
+
+              <div class="alert alert-success alert-solid" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+                  <div class="d-flex align-items-center justify-content-start">
+                      <i class="icon ion-ios-checkmark alert-icon tx-32 mg-t-5 mg-xs-t-0"></i>
+                      <span><strong>Well done! </strong> {!! \Session::get('success') !!}</span>
+                  </div><!-- d-flex -->
+              </div>
+
+              @endif
                 <thead>
                   <tr>
                     <th class="wd-10p">si</th>
@@ -60,8 +73,8 @@
                     <td>
                       <div>
                         <ul class="d-flex justify-content-around">
-                          <li><a href="{{ route('category.edit', $category->id) }}"><i class="fa fa-edit text-primary"></i></a></li>
-                          <li><a href="" data-toggle="modal" data-target="#delete{{$category->id}}"><i class="fa fa-trash text-danger"></i></a></li>
+                          <li><a class='btn btn-primary btn-sm mx-2' href="{{ route('category.edit', $category->id) }}"><i class="fa fa-edit text-white"></i> EDIT</a></li>
+                          <li><a class='btn btn-danger btn-sm' href="" data-toggle="modal" data-target="#delete{{$category->id}}"><i class="fa fa-trash text-white"></i> DELETE</a></li>
                         </ul>
                          <!-- model code start -->
                           <div class="modal fade" id="delete{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,36 +137,36 @@
                         <td>
                           <div>
                             <ul class="d-flex justify-content-around">
-                              <li><a href="{{ route('category.edit', $childCategory->id) }}"><i class="fa fa-edit text-primary"></i></a></li>
-                              <li><a href="" data-toggle="modal" data-target="#delete{{$childCategory->id}}"><i class="fa fa-trash text-danger"></i></a></li>
+                              <li><a class='btn btn-primary btn-sm mx-2' href="{{ route('category.edit', $childCategory->id) }}"><i class="fa fa-edit text-white"></i> EDIT</a></li>
+                              <li><a class='btn btn-danger btn-sm' href="#" data-toggle="modal" data-target="#delete{{$childCategory->id}}"><i class="fa fa-trash text-white"></i> DELETE</a></li>
                             </ul>
                             <!-- model code start -->
-  <div class="modal fade" id="delete{{$childCategory->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Delete This category Data?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <div>
-                  
-                  <ul class="d-flex text-center justify-content-center">
-                      <li style="margin-right:20px"><button type="button" class="btn btn-success" data-dismiss="modal">Close</button></li>
-                      <li>
-                          <form action="{{ route('category.destroy', $childCategory->id)}}" method="POST" enctype="multipart/form-data">
-                              @csrf
-                              <input type="submit" class="btn btn-danger" value='Confirm'>
-                          </form>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-          </div>
-      </div>
-  </div>
+                            <div class="modal fade" id="delete{{$childCategory->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete This category Data?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            
+                                            <ul class="d-flex text-center justify-content-center">
+                                                <li style="margin-right:20px"><button type="button" class="btn btn-success" data-dismiss="modal">Close</button></li>
+                                                <li>
+                                                    <form action="{{ route('category.destroy', $childCategory->id)}}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="submit" class="btn btn-danger" value='Confirm'>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                               <!-- model code end -->
                           </div>
                         </td>

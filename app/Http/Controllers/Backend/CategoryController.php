@@ -55,7 +55,7 @@ class CategoryController extends Controller
             $category->image = $imageName;
         }
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success',' Create Successfull');
     }
 
     /**
@@ -114,7 +114,7 @@ class CategoryController extends Controller
             $category->image = $imageName;
         }
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success',' Update Successfull');
     }
 
     /**

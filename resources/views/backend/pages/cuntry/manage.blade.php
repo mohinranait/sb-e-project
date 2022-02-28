@@ -17,6 +17,19 @@
             <div class="row">
                 <div class='p-4 col-lg-7 m-auto '>
                     <table class="table table-bordered table-colored table-dark">
+                    @if (\Session::has('success'))
+
+                    <div class="alert alert-success alert-solid" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <div class="d-flex align-items-center justify-content-start">
+                            <i class="icon ion-ios-checkmark alert-icon tx-32 mg-t-5 mg-xs-t-0"></i>
+                            <span><strong>Well done! </strong> {!! \Session::get('success') !!}</span>
+                        </div><!-- d-flex -->
+                    </div>
+
+                    @endif
                         <thead>
                             <tr>
                             <th>ID</th>
@@ -41,8 +54,8 @@
                                 <td>
                                     <div>
                                         <ul class='d-flex justify-content-around' >
-                                            <li><a href="{{ route('cuntry.edit' , $cuntry->id) }}" class='btn btn-primary '><i class='fa fa-edit text-white'></i> Edit</a></li>
-                                            <li><a href="#" data-toggle="modal" data-target="#delete{{$cuntry->id}}" class='btn btn-danger'><i class='fa fa-trash text-white'></i>Delete</a></li>
+                                            <li><a href="{{ route('cuntry.edit' , $cuntry->id) }}" class='btn btn-primary btn-sm '><i class='fa fa-edit text-white'> </i> EDIT</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#delete{{$cuntry->id}}" class='btn btn-danger btn-sm'><i class='fa fa-trash text-white'></i> DELETE</a></li>
                                         </ul>
                                         <!-- Delete Modal code Start -->
                                             <div class="modal fade" id="delete{{$cuntry->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -56,10 +69,10 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class='d-flex justify-content-center'>
-                                                        <button type="button" class="btn btn-secondary mx-4" data-dismiss="modal">Cancle</button>
+                                                        <button type="button" class="btn btn-secondary mx-4" data-dismiss="modal">CANCLE</button>
                                                         <form action="{{ route('cuntry.destroy' , $cuntry->id) }}" method='POST'>
                                                             @csrf 
-                                                            <input type="submit" class='btn btn-danger' value='Confirm' >
+                                                            <input type="submit" class='btn btn-danger' value='CONFIRM' >
                                                         </form>
                                                     </div>
                                                 </div>
