@@ -6,7 +6,7 @@
     <section>
 
         <div class="br-mainpanel">
-            <div class="br-pagetitle">
+            <div class="br-pagetitle" style='background:linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%);'>
                 <i class="icon ion-ios-home-outline"></i>
                 <div>
                     <h4>Create New Division Form</h4>
@@ -25,11 +25,11 @@
                             <input type="text" name='divisionname' class='form-control' placeholder='Division name...' autocomplate='off' >
                         </div>
                         <div class="form-group">
-                            <label for="">Division Name</label>
+                            <label for="">Division Priority</label>
                             <input type="number" name='priority' class='form-control' placeholder='priority number [1-9]'>
                         </div>
                         <div class="form-group">
-                            <label for="">Division Name</label>
+                            <label for="">Division Status</label>
                            <select name="status" class='form-control' id="">
                                <option value="1">--Select Status--</option>
                                <option value="1">Active</option>

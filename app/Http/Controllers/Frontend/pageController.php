@@ -5,12 +5,17 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\BrandModel;
 use App\Models\Category;
+use App\Models\District;
+use App\Models\Division;
 use App\Models\Product;
+use App\Models\cuntry;
 use App\Models\productImage;
+use App\Models\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use File;
 use Image;
+use Auth;
 
 class pageController extends Controller
 {
@@ -36,6 +41,13 @@ class pageController extends Controller
     {
         $products = Product::orderby('name','asc')->where('status',1)->get();
         return view('frontend.pages.shop',compact('products'));
+    }
+
+    // offer Products page
+    public function offerProduct()
+    {
+        $products = Product::orderby('name','asc')->where('is_fiture',1)->where('status',1)->get();
+        return view('frontend.pages.on-sell',compact('products'));
     }
     
 
@@ -82,7 +94,11 @@ class pageController extends Controller
      */
     public function checkout()
     {
-        return view('frontend.pages.checkout');
+        $cards = Card::all();
+        $districts = District::orderby('name','asc')->where('status',1)->get();
+        $divisions = Division::orderby('name','asc')->where('status',1)->get();
+        $cuntrys = cuntry::orderby('cuntry','asc')->where('status',1)->get();
+        return view('frontend.pages.checkout',compact('cards','districts','divisions','cuntrys'));
     }
 
     /**
@@ -102,7 +118,12 @@ class pageController extends Controller
      */
     public function login()
     {
-        return view('frontend.pages.customer-login');
+        if( Auth::check()){
+            return redirect()->back();
+        }else{
+            return view('frontend.pages.customer-login');
+        }
+       
     }
 
     /**
@@ -114,7 +135,9 @@ class pageController extends Controller
     {
         $products = Product::where('slug',$slug)->first();
         if( !empty($products)){
-            return view('frontend.pages.product-details',compact('products'));
+            $categorys = $products->category_id;
+            $productsRel = Product::where('category_id', $categorys)->where('status',1)->latest()->get();
+            return view('frontend.pages.product-details',compact('products','productsRel'));
         }else{
             return redirect()->back();
         }

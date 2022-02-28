@@ -23,7 +23,7 @@
 							@if(   $pro->count() > 0)
 								@foreach($pro as $product)
 								<div class="col-sm-6 col-lg-4 product">
-									<a href="shop-product-sidebar-left.html">
+									<a href="{{route('offer-product')}}">
 										@if( $product->is_fiture == 0)
 										@elseif ( $product->is_fiture == 1)
 											<span class="onsale">Sale!</span>

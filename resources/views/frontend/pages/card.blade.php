@@ -117,37 +117,7 @@
 					<div class="featured-boxes">
 						<div class="row">
 							<div class="col-sm-6">
-								<div class="featured-box featured-box-primary text-left mt-3 mt-lg-4">
-									<div class="box-content">
-										<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Calculate Shipping</h4>
-
-										<form action="/" id="frmCalculateShipping" method="post">
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="font-weight-bold text-dark">Country</label>
-													<select class="form-control">
-														<option value="">Select a country</option>
-													</select>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col-lg-6">
-													<label class="font-weight-bold text-dark">State</label>
-													<input type="text" value="" class="form-control">
-												</div>
-												<div class="form-group col-lg-6">
-													<label class="font-weight-bold text-dark">Zip Code</label>
-													<input type="text" value="" class="form-control">
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col">
-													<input type="submit" value="Update Totals" class="btn btn-xl btn-light pr-4 pl-4 text-2 font-weight-semibold text-uppercase" data-loading-text="Loading...">
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
+								
 							</div>
 							<div class="col-sm-6">
 								<div class="featured-box featured-box-primary text-left mt-3 mt-lg-4">
@@ -160,7 +130,7 @@
 														<strong class="text-dark">Cart Subtotal</strong>
 													</th>
 													<td>
-														<strong class="text-dark"><span class="amount">$431</span></strong>
+														<strong class="text-dark"><span class="amount">{{App\Models\Card::totalPrice()}} BDT</span></strong>
 													</td>
 												</tr>
 												<tr class="shipping">
@@ -176,7 +146,7 @@
 														<strong class="text-dark">Order Total</strong>
 													</th>
 													<td>
-														<strong class="text-dark"><span class="amount">$431</span></strong>
+														<strong class="text-dark"><span class="amount">{{App\Models\Card::totalPrice()}} BDT</span></strong>
 													</td>
 												</tr>
 											</tbody>
@@ -191,7 +161,7 @@
 					<div class="row">
 						<div class="col">
 							<div class="actions-continue">
-								<button type="submit" class="btn btn-primary btn-modern text-uppercase">Proceed to Checkout <i class="fas fa-angle-right ml-1"></i></button>
+								<a href="{{route('checkout')}}" class="btn btn-primary btn-modern text-uppercase">Proceed to Checkout <i class="fas fa-angle-right ml-1"></i></a>
 							</div>
 						</div>
 					</div>

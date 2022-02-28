@@ -1,17 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Frontend\orderHistoryController;
+
+use App\Http\Controllers\SslCommerzPaymentController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
 |
 */
 
@@ -24,11 +21,11 @@ use App\Http\Controllers\Frontend\orderHistoryController;
 
 Route::get('/', 'App\Http\Controllers\Frontend\pageController@home')->name('home');
 Route::get('/shop', 'App\Http\Controllers\Frontend\pageController@shop')->name('shop');
+Route::get('/offer-products', 'App\Http\Controllers\Frontend\pageController@offerProduct')->name('offer-product');
 Route::get('/product-details/{slug}' , "App\Http\Controllers\Frontend\pageController@productdetails")->name('product-details');
 
 // primary category and sub Category wish product display
 Route::get('/primary_category/{slug}' , 'App\Http\Controllers\Frontend\pageController@primaryCategory_wish_product')->name('primary-category-wish');
-
 Route::get('/category/{slug}' , 'App\Http\Controllers\Frontend\pageController@subCategory_wish_product')->name('category-wish-product');
 
 // search Result Route
@@ -57,10 +54,20 @@ Route::group( ['prefix' => 'customer'] , function(){
     // order management route 
     Route::get('/order_history' , [orderHistoryController::class , 'index'] )->name('orderhistory');
 
-
-
-
 });
+
+// SSLCOMMERZ Start
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('make-payment');
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
 
 
 

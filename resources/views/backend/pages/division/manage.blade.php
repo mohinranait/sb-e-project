@@ -6,7 +6,7 @@
     <section>
 
         <div class="br-mainpanel">
-            <div class="br-pagetitle">
+            <div class="br-pagetitle" style='background:linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%);'>
                 <i class="icon ion-ios-home-outline"></i>
                 <div>
                     <h4>All Division Information</h4>

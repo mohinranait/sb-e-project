@@ -8,13 +8,13 @@
                                 <nav class="header-nav-top">
                                     <ul class="nav nav-pills">
                                         <li class="nav-item nav-item-borders py-2">
-                                            <span class="pl-0"><i class="far fa-dot-circle text-4 text-color-primary" style="top: 1px;"></i> 1234 Street Name, City Name</span>
+                                            <span class="pl-0"><i class="far fa-dot-circle text-4 text-color-primary" style="top: 1px;"></i> 1212 Dhaka , Bangladesh</span>
                                         </li>
                                         <li class="nav-item nav-item-borders py-2 d-none d-lg-inline-flex">
                                             <a href="tel:123-456-7890"><i class="fab fa-whatsapp text-4 text-color-primary" style="top: 0;"></i> 123-456-7890</a>
                                         </li>
                                         <li class="nav-item nav-item-borders py-2 d-none d-sm-inline-flex">
-                                            <a href="mailto:mail@domain.com"><i class="far fa-envelope text-4 text-color-primary" style="top: 1px;"></i> mail@domain.com</a>
+                                            <a href="mailto:mail@domain.com"><i class="far fa-envelope text-4 text-color-primary" style="top: 1px;"></i> ebrahimit49@gmail.com</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -79,13 +79,13 @@
                                 <li class="d-none d-sm-inline-flex">
                                     <div class="header-extra-info-text">
                                         <label>SEND US AN EMAIL</label>
-                                        <strong><a href="mailto:mail@example.com">MAIL@EXAMPLE.COM</a></strong>
+                                        <strong><a href="mailto:mail@example.com">EBRAHIMIT49@GMAIL.COM</a></strong>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="header-extra-info-text">
                                         <label>CALL US NOW</label>
-                                        <strong><a href="tel:8001234567">800-123-4567</a></strong>
+                                        <strong><a href="tel:8001234567">+8801728-068200</a></strong>
                                     </div>
                                 </li>
                             </ul>
@@ -110,7 +110,7 @@
                                                         <a href="{{route('product-details', $items->products->slug)}}">{{$items->products->name}}</a>
                                                     </p>
                                                     <p class="qty-price">
-                                                    {{$items->product_qty}}X <span class="price">
+                                                    {{$items->product_qty}} X <span class="price">
                                                         @if( !empty($items->products->offer_price) )
                                                             {{$items->products->offer_price}} BDT
                                                         @else 
@@ -139,7 +139,7 @@
                                         </div>
                                         <div class="actions">
                                             <a class="btn btn-dark" href="{{route('card.items')}}">View Cart</a>
-                                            <a class="btn btn-primary" href="#">Checkout</a>
+                                            <a class="btn btn-primary" href="{{route('checkout')}}">Checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -179,6 +179,11 @@
                                                 <li class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle" href="{{route('card.items')}}">
                                                       Card
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="{{route('offer-product')}}">
+                                                      Offer Products
                                                     </a>
                                                 </li>
 

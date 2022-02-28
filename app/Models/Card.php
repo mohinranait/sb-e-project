@@ -34,9 +34,9 @@ class Card extends Model
     {
         if(Auth::check()){
             $cards = Card::where('user_id', Auth::id())->where('order_id', NULL)->get();
-        }else{
-            $cards = Card::where('ip_address', request()->ip() )->where('order_id', NULL)->get();
         }
+        $cards = Card::where('ip_address', request()->ip() )->where('order_id', NULL)->get();
+        
 
         $totalPriceVariable = 0;
         foreach($cards as $card){
@@ -54,9 +54,9 @@ class Card extends Model
     {
         if( Auth::check()){
             $cards = Card::where('user_id',Auth::id())->where('order_id',NULL)->get();
-        }else{
-            $cards = Card::where('ip_address',request()->ip())->where('order_id',NULL)->get();
         }
+        $cards = Card::where('ip_address',request()->ip())->where('order_id',NULL)->get();
+        
 
         $totalCoutn = 0;
         foreach($cards as $card){

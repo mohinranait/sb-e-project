@@ -30,20 +30,20 @@
 
                             <div class="form-group">
                                 <label for="">Select your category</label>
-<select name="is_parent" class="form-control" id="">
-    <option value="0">--select category--</option>
-    @foreach ( $parents as $parent )
-    <option value="{{ $parent->id }}"
-    @if( $category->is_parent == 0 ) 
+                                <select name="is_parent" class="form-control" id="">
+                                    <option value="0">--select category--</option>
+                                    @foreach ( $parents as $parent )
+                                    <option value="{{ $parent->id }}"
+                                    @if( $category->is_parent == 0 ) 
 
-    @elseif ( $category->is_parent != 0 )
-        @if( $parent->id == $category->is_parent )
-            selected
-        @endif
-    @endif
-    >{{ $parent->title }}</option>
-    @endforeach
-</select>
+                                    @elseif ( $category->is_parent != 0 )
+                                        @if( $parent->id == $category->is_parent )
+                                            selected
+                                        @endif
+                                    @endif
+                                    >{{ $parent->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">

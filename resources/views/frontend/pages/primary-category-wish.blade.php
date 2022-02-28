@@ -20,12 +20,12 @@
 
 					<div class="masonry-loader masonry-loader-showing">
 						<div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
-                         <!-- {{$categorys->id}} -->
+                         <!-- $categorys->id -->
 
 							@foreach(App\Models\Category::where('is_parent', $categorys->id)->get() as $cCat)
 								@foreach(App\Models\Product::orderby('id','desc')->where('category_id', $cCat->id)->get() as $product)									
 									<div class="col-sm-6 col-lg-4 product">
-										<a href="#">
+										<a href="{{route('offer-product')}}">
 											@if( $product->is_fiture == 0)
 											@elseif ( $product->is_fiture == 1)
 												<span class="onsale">Sale!</span>

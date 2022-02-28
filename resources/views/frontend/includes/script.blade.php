@@ -30,6 +30,20 @@
 		<!-- Theme Initialization Files -->
 		<script src=" {{asset('frontend/js/theme.init.js')}} "></script>
 
+		<!-- SSL COMMERZ popup massege start -->
+		<script>
+			(function (window, document) {
+				var loader = function () {
+					var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+					script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+					tag.parentNode.insertBefore(script, tag);
+				};
+
+				window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+			})(window, document);
+		</script>
+		<!-- SSL COMMERZ popup massege end -->
+
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

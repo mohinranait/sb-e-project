@@ -74,6 +74,7 @@ class productController extends Controller
                 $p_image->image      = $imgName;
                 $p_image->save();
                 
+                
             }
         }
 
