@@ -100,7 +100,7 @@
                                     <div class="header-nav-features-dropdown" id="headerTopCartDropdown">
                                         <ol class="mini-products-list">
                                             @if(App\Models\Card::count() > 0)
-                                            @foreach(App\Models\Card::orderby('id','asc')->get() as $items)
+                                            @foreach(App\Models\Card::orderby('id','asc')->where('order_id',null)->get() as $items)
                                             <li class="item">
                                                 @if( $items->products->images->count() > 0 )
                                                 <a href="{{route('product-details', $items->products->slug)}}" title="{{ $items->products->name }}" class="product-image"><img src="{{ asset('backend/img/product/' .  $items->products->images->first()->image )}}" alt="{{ $items->products->name}}"></a>

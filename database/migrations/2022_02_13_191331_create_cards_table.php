@@ -18,6 +18,7 @@ class CreateCardsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('product_qty')->default(1);
             $table->unsignedInteger('order_id')->nullable();
+            $table->string('unite_price')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->string('ip_address')->nullable();
             $table->timestamps();

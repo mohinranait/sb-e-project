@@ -62,14 +62,15 @@
 									@endif
 								</p>
 
-								<form enctype="multipart/form-data"  method="post" class="cart">
+								<form action="{{route('card.store')}}" enctype="multipart/form-data"  method="POST" class="cart">
 									@csrf 
 									<div class="quantity quantity-lg">
+										<input type="hidden" name='productid' value="{{$products->id}}">
 										<input type="button" class="minus" value="-">
-										<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+										<input type="text" class="input-text qty text" title="Qty" value="1" name="product_qty" min="1" step="1">
 										<input type="button" class="plus" value="+">
 									</div>
-									<button href="#" class="btn btn-primary btn-modern text-uppercase">Add to cart</button>
+									<button type="submit" class="btn btn-primary btn-modern text-uppercase">Add to cart</button>
 								</form>
 
 								<div class="product-meta">

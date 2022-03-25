@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\Card;
 use Auth;
 
 class SslCommerzPaymentController extends Controller
@@ -22,6 +23,7 @@ class SslCommerzPaymentController extends Controller
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         if(Auth::check()){
+            // login user id
             $user_id  = Auth::user()->id;
 
 
@@ -74,6 +76,7 @@ class SslCommerzPaymentController extends Controller
                 ->where('transaction_id', $post_data['tran_id'])
                 ->updateOrInsert([
                     'user_id'           => $post_data['user_id'],
+                    'ip_address'        => request()->ip(),
                     'first_name'        => $post_data['cus_name'],
                     'last_name'         => $post_data['cus_last_name'],
                     'email'             => $post_data['cus_email'],
@@ -190,7 +193,12 @@ class SslCommerzPaymentController extends Controller
         #Check order status in order tabel against the transaction id or order id.
         $order_detials = DB::table('orders')
             ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+            ->select('id','transaction_id', 'status', 'currency', 'amount')->first();
+
+            foreach( Card::totalCard() as $card ){
+                $card->order_id = $order_detials->id;
+                $card->save();
+            }
 
         if ($order_detials->status == 'Pending') {
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);

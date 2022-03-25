@@ -21,11 +21,11 @@ class CreateOrdersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('address');
-            $table->integer('division_id');
-            $table->integer('district_id');
-            $table->string('cuntry');
-            $table->string('post_code');
+            $table->string('address')->nullable();
+            $table->integer('division_id')->nullable();
+            $table->integer('district_id')->nullable();
+            $table->string('cuntry')->nullable();
+            $table->string('post_code')->nullable();
             $table->text('message')->nullable();
             $table->unsignedInteger('amount')->nullable();
             $table->string('transaction_id')->nullable();

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\orderHistoryController;
 
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\Backend\orderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,23 +87,34 @@ Route::group( ['prefix' => 'admin'] , function(){
     Route::get('/dashboard' , 'App\Http\Controllers\Backend\PageController@dashboard')->middleware('auth', 'verified','role')->name('admin.dashboard');
 
     // Brand Route Group
+    Route::group( ['prefix' => '/order'] , function(){
+        Route::get('/manage' , [orderController::class, 'index'])->middleware('auth','role','verified')->name('order.index');
+        Route::get('/details-order{id}' , [orderController::class, 'show'])->middleware('auth','role','verified')->name('order.show');
+        Route::get('/create' , [orderController::class, 'create'])->middleware('auth', 'verified','role')->name('order.create');
+        Route::post('/store' , [orderController::class, 'store'])->middleware('auth', 'verified','role')->name('order.store');
+        Route::get('/edit/{id}' , [orderController::class, 'edit'])->middleware('auth', 'verified','role')->name('order.edit');
+        Route::post('/update/{id}' , [orderController::class, 'update'])->middleware('auth', 'verified','role')->name('order.update');
+        Route::post('/destroy/{id}' , [orderController::class, 'destroy'])->middleware('auth', 'verified','role')->name('order.destroy');
+    });
+
+    // Brand Route Group
     Route::group( ['prefix' => '/brand'] , function(){
-        Route::get('/manage' , 'App\Http\Controllers\Backend\brandController@index')->middleware('auth','role')->name('brand.index');
+        Route::get('/manage' , 'App\Http\Controllers\Backend\brandController@index')->middleware('auth','role','verified')->name('brand.index');
         Route::get('/create' , 'App\Http\Controllers\Backend\brandController@create')->middleware('auth', 'verified','role')->name('brand.create');
-        Route::post('/store' , 'App\Http\Controllers\Backend\brandController@store')->middleware('auth', 'verified','role', 'verified','role')->name('brand.store');
-        Route::get('/edit/{id}' , 'App\Http\Controllers\Backend\brandController@edit')->middleware('auth', 'verified','role', 'verified','role')->name('brand.edit');
-        Route::post('/update/{id}' , 'App\Http\Controllers\Backend\brandController@update')->middleware('auth', 'verified','role', 'verified','role')->name('brand.update');
-        Route::post('/destroy/{id}' , 'App\Http\Controllers\Backend\brandController@destroy')->middleware('auth', 'verified','role', 'verified','role')->name('brand.destroy');
+        Route::post('/store' , 'App\Http\Controllers\Backend\brandController@store')->middleware('auth', 'verified','role')->name('brand.store');
+        Route::get('/edit/{id}' , 'App\Http\Controllers\Backend\brandController@edit')->middleware('auth', 'verified','role')->name('brand.edit');
+        Route::post('/update/{id}' , 'App\Http\Controllers\Backend\brandController@update')->middleware('auth', 'verified','role')->name('brand.update');
+        Route::post('/destroy/{id}' , 'App\Http\Controllers\Backend\brandController@destroy')->middleware('auth', 'verified','role')->name('brand.destroy');
     });
 
     //Category Group
     Route::group( ['prefix' => '/category'] , function(){
-        Route::get('/manage' , 'App\Http\Controllers\Backend\CategoryController@index')->middleware('auth', 'verified','role', 'verified','role')->name('category.index');
-        Route::get('/create' , 'App\Http\Controllers\Backend\CategoryController@create')->middleware('auth', 'verified','role', 'verified','role')->name('category.create');
-        Route::post('/store' , 'App\Http\Controllers\Backend\CategoryController@store')->middleware('auth', 'verified','role', 'verified','role')->name('category.store');
-        Route::get('/edit/{id}' , 'App\Http\Controllers\Backend\CategoryController@edit')->middleware('auth', 'verified','role', 'verified','role')->name('category.edit');
-        Route::post('/update/{id}' , 'App\Http\Controllers\Backend\CategoryController@update')->middleware('auth', 'verified','role', 'verified','role')->name('category.update');
-        Route::post('/destroy/{id}' , 'App\Http\Controllers\Backend\CategoryController@destroy')->middleware('auth', 'verified','role', 'verified','role')->name('category.destroy');
+        Route::get('/manage' , 'App\Http\Controllers\Backend\CategoryController@index')->middleware('auth', 'verified','role')->name('category.index');
+        Route::get('/create' , 'App\Http\Controllers\Backend\CategoryController@create')->middleware('auth', 'verified','role')->name('category.create');
+        Route::post('/store' , 'App\Http\Controllers\Backend\CategoryController@store')->middleware('auth', 'verified','role')->name('category.store');
+        Route::get('/edit/{id}' , 'App\Http\Controllers\Backend\CategoryController@edit')->middleware('auth', 'verified','role')->name('category.edit');
+        Route::post('/update/{id}' , 'App\Http\Controllers\Backend\CategoryController@update')->middleware('auth', 'verified','role')->name('category.update');
+        Route::post('/destroy/{id}' , 'App\Http\Controllers\Backend\CategoryController@destroy')->middleware('auth', 'verified','role')->name('category.destroy');
     });
 
     // Division Group

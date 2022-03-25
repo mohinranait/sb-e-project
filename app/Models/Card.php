@@ -9,7 +9,7 @@ use Auth;
 class Card extends Model
 {
     use HasFactory;
-    protected $fillable = ['product_id','product_qty','order_id','user_id','ip_address'];
+    protected $fillable = ['product_id','product_qty','order_id','unite_price','user_id','ip_address'];
 
     // Product Class Call
     public function products()
@@ -29,7 +29,18 @@ class Card extends Model
         return $this->belongsTo(Order::class);
     }
 
+    // Totla Items
+    public static function totalCard(){
+        if( Auth::check()){
+            $cards = Card::where('user_id', Auth::id())->where('order_id',NULL)->get();
+        }
+        $cards = Card::where('ip_address', request()->ip() )->where('order_id', NULL)->get();
 
+        return $cards;
+    }
+
+
+    // Totla Price function
     public static function totalPrice ()
     {
         if(Auth::check()){
@@ -49,7 +60,7 @@ class Card extends Model
         return $totalPriceVariable;
     }
 
-    // total Items count
+    // total Items Card
     public static function totalItem()
     {
         if( Auth::check()){

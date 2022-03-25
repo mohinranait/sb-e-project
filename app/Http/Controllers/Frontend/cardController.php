@@ -18,7 +18,7 @@ class cardController extends Controller
      */
     public function index()
     {
-        $cardProduct = Card::orderby('id','asc')->get(); 
+        $cardProduct = Card::orderby('id','asc')->where('order_id',null)->get(); 
         return view('frontend.pages.card',compact('cardProduct'));
     }
 
@@ -41,9 +41,9 @@ class cardController extends Controller
     public function store(Request $request)
     {
         if( Auth::check()){
-            $card = Card::where('user_id',Auth::id())->where('product_id',$request->productid)->first();
+            $card = Card::where('user_id',Auth::id())->where('product_id',$request->productid)->where('order_id',NULL)->first();
         }else{
-            $card = Card::where('ip_address',request()->ip() )->where('product_id',$request->productid)->first();
+            $card = Card::where('ip_address',request()->ip() )->where('product_id',$request->productid)->where('order_id',NULL)->first();
         }
 
         
@@ -53,10 +53,12 @@ class cardController extends Controller
         }else{
             $card = new Card();
             if( Auth::check() ){
-                $card->user_id = Auth::id();
+                $card->user_id  = Auth::id();
             }
-            $card->ip_address = $request->ip();
-            $card->product_id = $request->productid;
+            $card->ip_address   = $request->ip();
+            $card->product_id   = $request->productid;
+            $card->product_qty  = $request->product_qty;
+            $card->unite_price  = $request->unite_price;
             $card->save();
             return redirect()->back();
         }

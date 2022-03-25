@@ -14,9 +14,16 @@
             </div>
             <!-- body content start -->
             <div class="container mt-4">
-                <div class="bd rounded table-responsive">
-                   dfdsfdsdf
+                
+                <div class="card bd-0">
+                    <div class="card-header tx-medium ">
+                        Description
+                    </div><!-- card-header -->
+                    <div class="card-body bd bd-t-0 rounded-bottom">
+                        asfds
+                    </div><!-- card-body -->
                 </div>
+                
             </div><!---container-->
             <!-- body content end -->  
         </div>

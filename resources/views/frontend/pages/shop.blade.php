@@ -46,6 +46,12 @@
 									<form action="{{route('card.store')}}" method='POST'>
 										@csrf 
 										<a class="add-to-cart-product bg-color-primary">
+											@if( !empty($product->offer_price) )
+											<input type="hidden" name='unite_price' value="{{$product->offer_price}}">
+											@else
+											<input type="hidden" name='unite_price' value="{{$product->regular_price}}">
+											@endif
+											<input type="hidden" name='product_qty' value="1">
 											<input type="hidden" name='productid' value="{{$product->id}}">
 											<input type="submit" name='btn' value="Add to Card" class='btn btn-sm text-white' style='background:transparent'  >
 									

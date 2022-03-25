@@ -11,6 +11,19 @@
 
         <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Information Summary</label>
 
+        <!-- Order left menu start -->
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="menu-item-icon icon ion-grid "></i>
+            <span class="menu-item-label">Orders</span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            <li class="sub-item"><a href="{{ route('order.index')}}" class="sub-link">All Orders</a></li>
+            <li class="sub-item"><a href="{{ route('order.create')}}" class="sub-link">Add Orders</a></li>
+          </ul>
+        </li>
+        <!-- Order left menu end -->
+        
         <!-- product left menu start -->
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
